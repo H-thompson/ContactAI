@@ -15,23 +15,40 @@ def ScriptAnalysis(script):
     positive = 0
     negative = 0
 
-    swears = []
     with open("Analysis/swearWords.csv") as swearfile:
         reader = csv.reader(swearfile)
-        for row in reader:
-            swears.append(row)
+        swears = list(reader)
 
     scr = script.split()
 
     for word in swears:
-        if word in scr:
+        if scr.count(word) > 0:
             negative += 1
+            continue
         else:
             if negative == 0:
-                break
+                continue
             else:
                 negative -= 1
-    points += negative
+                continue
+        points += negative
+
+
+    with open("Analysis/positiveExpressions.csv") as goodFile:
+        reader = csv.reader(goodFile)
+        good = list(reader)
+
+    for word in good:
+        if word in scr:
+            positive += 1
+        else:
+            if positive == 0:
+                break
+            else:
+                positive -= 1
+    points += positive
+
+    print(str(points))
 
 
 file = 'QA-01'

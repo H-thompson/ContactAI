@@ -2,7 +2,10 @@ import time
 import boto3
 import requests
 import json
-import TextAnalysis
+from Analysis import TextAnalysis
+
+def addFile():
+    return
 
 def transcribe_file(job_name, file_uri, transcribe_client):
     transcribe_client.start_transcription_job(
