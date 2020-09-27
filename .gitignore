@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+Transcription/SECRETtokens.py
 
 # C extensions
 *.so
