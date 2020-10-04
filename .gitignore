@@ -3,7 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 SECRETtokens.py
-
+.vscode/
+.vs/
 # C extensions
 *.so
 

@@ -24,14 +24,13 @@ def ScriptAnalysis(script):
     for word in swears:
         if scr.count(word) > 0:
             negative += 1
-            continue
         else:
             if negative == 0:
                 continue
             else:
                 negative -= 1
-                continue
         points += negative
+        continue
 
 
     with open("Analysis/positiveExpressions.csv") as goodFile:
@@ -43,10 +42,11 @@ def ScriptAnalysis(script):
             positive += 1
         else:
             if positive == 0:
-                break
+                continue
             else:
                 positive -= 1
-    points += positive
+        points += positive
+        continue
 
     print(str(points))
 
