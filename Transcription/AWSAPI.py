@@ -1,11 +1,17 @@
 import time
 import boto3
+import boto3
 import requests
-import json
+#import json
 from Analysis import TextAnalysis
+import SECRETtokens
+from SECRETtokens import url
 
 def addFile():
-    return
+    addURL = "http://voiceai.io.s3." + SECRETtokens.areas.area + ".amazonaws.com/"
+    s3 = boto3.resource('s3')
+    resp = s3.meta.client.upload_file('Transcription/audio/', SECRETtokens.areas.area, '')
+    print(resp.status_code)
 
 def transcribe_file(job_name, file_uri, transcribe_client):
     transcribe_client.start_transcription_job(

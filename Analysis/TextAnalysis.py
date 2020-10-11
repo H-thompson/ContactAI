@@ -21,36 +21,22 @@ def ScriptAnalysis(script):
 
     scr = script.split()
 
-    for word in swears:
+    for word in swears[0]:
         if scr.count(word) > 0:
             negative += 1
+            points -= negative
         else:
-            if negative == 0:
-                continue
-            else:
-                negative -= 1
-        points += negative
-        continue
-
+            continue
 
     with open("Analysis/positiveExpressions.csv") as goodFile:
         reader = csv.reader(goodFile)
         good = list(reader)
 
-    for word in good:
+    for word in good[0]:
         if word in scr:
             positive += 1
+            points += positive
         else:
-            if positive == 0:
-                continue
-            else:
-                positive -= 1
-        points += positive
-        continue
+            continue
 
-    print(str(points))
-
-
-file = 'QA-01'
-
-Transcript(file)
+    print('TOTAL POINTS: ' + str(points))
